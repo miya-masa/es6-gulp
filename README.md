@@ -3,3 +3,4 @@
 
 Google Web Starter Kit ベース
 
+* Marionetteが依存しているBackboneJSは1.2.3なので明示的に指定する

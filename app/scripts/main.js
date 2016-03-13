@@ -17,6 +17,21 @@
  *
  */
 /* eslint-env browser */
-(function() {
-    'use strict';
-})();
+import {
+    Application
+}
+from 'backbone.marionette';
+import Backbone from 'backbone';
+import TodoLayout from './todo/ui/TodoLayout';
+import TodoGridTable from './todo/ui/TodoGridTable';
+
+var app = new Application();
+app.on('start', () => {
+    Backbone.history.start();
+    let layout = new TodoLayout({
+        el: '#contents'
+    });
+    layout.render();
+    layout.showChildView('todoGridTable', new TodoGridTable());
+});
+app.start();
