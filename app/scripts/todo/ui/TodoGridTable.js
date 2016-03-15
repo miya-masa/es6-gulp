@@ -17,6 +17,7 @@ default LayoutView.extend({
             collection: new Backbone.Collection([1, 2, 3])
         });
         gridRows.render();
+        // 一度空Viewを入れてから要素を書き換える
         this.getRegion('todoGridRows').show(new EmptyView());
         this.getRegion('todoGridRows').$el.replaceWith(gridRows.el);
     }

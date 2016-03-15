@@ -51,9 +51,9 @@
   "dependencies": {
     "backbone": "1.2.3",
     "backbone.marionette": "^2.4.4",
+    "bootstrap-material-design": "^0.5.9",
     "handlebars": "^4.0.5",
     "jquery": "^2.2.1",
-    "material-design-lite": "^1.1.2",
     "rx": "^4.1.0"
   },
   "browserify": {

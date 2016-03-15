@@ -24,6 +24,7 @@ from 'backbone.marionette';
 import Backbone from 'backbone';
 import TodoLayout from './todo/ui/TodoLayout';
 import TodoGridTable from './todo/ui/TodoGridTable';
+import TodoDialog from './todo/ui/TodoDialog';
 
 var app = new Application();
 app.on('start', () => {
@@ -33,5 +34,6 @@ app.on('start', () => {
     });
     layout.render();
     layout.showChildView('todoGridTable', new TodoGridTable());
+    layout.showChildView('todoDialog', new TodoDialog());
 });
 app.start();
