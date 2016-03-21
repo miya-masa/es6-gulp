@@ -1,6 +1,5 @@
 import { Model } from 'backbone';
-import channel from '../app/Channel'
-import sequence from '../app/Sequence'
+import sequence from '../app/Sequence';
 
 export default Model.extend({
   defaults: {
@@ -23,7 +22,7 @@ export default Model.extend({
       errorMessages.push('LimitDateが不正です。');
     }
     if (errorMessages.length > 0) {
-      return errorMessages.join('')
+      return errorMessages.join('');
     }
   }
 });

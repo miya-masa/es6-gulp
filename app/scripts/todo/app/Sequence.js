@@ -1,3 +1,4 @@
+/* global localStorage */
 class Sequence {
   constructor() {
     this.seq = localStorage.getItem('sequence') - 0 || 0;
@@ -8,7 +9,7 @@ class Sequence {
     return this.seq;
   }
   current() {
-    return this.seq
+    return this.seq;
   }
 }
 export default new Sequence();

@@ -1,5 +1,6 @@
 import { ItemView } from 'backbone.marionette';
 import channel from '../app/Channel';
+import Backbone from 'backbone';
 import row from './templates/grid-row.hbs';
 export default ItemView.extend({
   tagName: 'tr',
@@ -13,7 +14,7 @@ export default ItemView.extend({
     'click @ui.checkboxComplete': 'onClickCheckboxComplete'
   },
   modelEvents: {
-    'change': 'render'
+    change: 'render'
   },
   onClickBtnRemove() {
     channel.trigger('todo:remove', this.model.id);
@@ -22,7 +23,8 @@ export default ItemView.extend({
     channel.trigger('todo:complete', this.model.id);
   },
   onRender() {
-    jQuery.material.checkbox(this.ui.checkboxComplete);
-    this.$el.css('text-decoration', this.model.get('complete') ? 'line-through' : '');
+    Backbone.$.material.checkbox(this.ui.checkboxComplete);
+    this.$el.css('text-decoration',
+      this.model.get('complete') ? 'line-through' : '');
   }
 });

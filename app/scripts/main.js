@@ -16,7 +16,7 @@
  *  limitations under the License
  *
  */
-/* eslint-env browser */
+/* eslint-env browser,jquery */
 import { Application } from 'backbone.marionette';
 import Backbone from 'backbone';
 Backbone.$ = jQuery;

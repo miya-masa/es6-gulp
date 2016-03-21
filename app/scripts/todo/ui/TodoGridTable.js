@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: [2, { "argsIgnorePattern": "unused" }] */
 import { LayoutView } from 'backbone.marionette';
 import grid from './templates/grid-table.hbs';
 import Rx from 'rx-lite';
@@ -11,13 +12,14 @@ export default LayoutView.extend({
   },
   onRender() {
     Rx.Observable.fromPromise(todoList.fetch())
-      .map(e => new TodoGridRows({
+      .map(unused => new TodoGridRows({
         collection: todoList
       }))
       .subscribe(gridRows => {
         gridRows.render();
         // 一度空Viewを入れてから要素を書き換える
-        this.getRegion('todoGridRows').show(new EmptyView()); this.getRegion('todoGridRows').$el.replaceWith(gridRows.el);
+        this.getRegion('todoGridRows').show(new EmptyView());
+        this.getRegion('todoGridRows').$el.replaceWith(gridRows.el);
       });
   }
 });
