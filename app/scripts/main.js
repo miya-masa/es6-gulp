@@ -23,8 +23,8 @@ Backbone.$ = jQuery;
 import TodoLayout from './todo/ui/TodoLayout';
 import TodoGridTable from './todo/ui/TodoGridTable';
 import TodoDialog from './todo/ui/TodoDialog';
-
 var app = new Application();
+
 app.on('start', () => {
   Backbone.history.start();
   let layout = new TodoLayout({
