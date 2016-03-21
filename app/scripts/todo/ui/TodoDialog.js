@@ -1,6 +1,5 @@
 import { ItemView } from 'backbone.marionette';
 import dialog from './templates/dialog.hbs';
-import sequence from '../app/Sequence';
 import Channel from '../app/Channel';
 import Todo from '../model/Todo';
 export default ItemView.extend({
