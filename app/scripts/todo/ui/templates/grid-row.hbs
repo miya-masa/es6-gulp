@@ -1,7 +1,15 @@
-<td>かいもの</td>
-<td>2016/1/1</td>
+<td>{{id}}</td>
+<td>{{todo}}</td>
+<td>{{limitDate}}</td>
+<td class="form-group">
+    <div class="checkbox">
+        <label>
+            <input id="checkbox-complete" type="checkbox" {{#complete}}checked="checked" {{/complete}} />
+        </label>
+    </div>
+</td>
 <td class="btn-group-sm">
-    <button class="btn btn-danger btn-fab"><i class="material-icons">remove</i>
+    <button class="btn-remove btn btn-danger btn-fab"><i class="material-icons">remove</i>
         <div class="ripple-container"></div>
     </button>
 </td>

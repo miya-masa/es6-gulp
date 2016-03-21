@@ -17,23 +17,21 @@
  *
  */
 /* eslint-env browser */
-import {
-    Application
-}
-from 'backbone.marionette';
+import { Application } from 'backbone.marionette';
 import Backbone from 'backbone';
+Backbone.$ = jQuery;
 import TodoLayout from './todo/ui/TodoLayout';
 import TodoGridTable from './todo/ui/TodoGridTable';
 import TodoDialog from './todo/ui/TodoDialog';
 
 var app = new Application();
 app.on('start', () => {
-    Backbone.history.start();
-    let layout = new TodoLayout({
-        el: '#contents'
-    });
-    layout.render();
-    layout.showChildView('todoGridTable', new TodoGridTable());
-    layout.showChildView('todoDialog', new TodoDialog());
+  Backbone.history.start();
+  let layout = new TodoLayout({
+    el: '#contents'
+  });
+  layout.render();
+  layout.showChildView('todoGridTable', new TodoGridTable());
+  layout.showChildView('todoDialog', new TodoDialog());
 });
 app.start();
