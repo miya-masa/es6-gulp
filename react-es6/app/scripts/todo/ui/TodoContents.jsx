@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoDialog from './TodoDialog.jsx';
+import TodoGridTable from './TodoGridTable.jsx';
 
 export default class TodoContents extends React.Component {
 
@@ -8,8 +9,7 @@ export default class TodoContents extends React.Component {
         <div className="row">
           <TodoDialog />
           <div>
-              <div id="todo-grid-table">
-              </div>
+          <TodoGridTable />
           </div>
         </div>
       );
