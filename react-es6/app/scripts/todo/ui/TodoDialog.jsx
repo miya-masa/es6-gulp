@@ -1,6 +1,17 @@
 import React from 'react';
+import TodoActions from '../app/TodoActions';
 
 export default class TodoContents extends React.Component {
+
+  onClickAdd() {
+    console.log(this.todoText);
+    TodoActions.createTodo({
+      id: 'id1',
+      todo: 'todo',
+      limitDate: '2000/1/1',
+      complete: true
+    });
+  }
 
   render() {
     return (
@@ -8,7 +19,9 @@ export default class TodoContents extends React.Component {
             <button className="btn btn-default btn-fab" data-toggle="modal" data-target="#create-todo-dialog"><i className="material-icons">add</i>
                 <div className="ripple-container"></div>
             </button>
-            <div id="create-todo-dialog" className="modal fade in" tabIndex="-1"  style={{display: 'none'}}>
+            <div id="create-todo-dialog" className="modal fade in" tabIndex="-1"  style={{
+        display: 'none'
+      }}>
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -24,20 +37,20 @@ export default class TodoContents extends React.Component {
                                     <div className="form-group">
                                         <label htmlFor="inputTodo" className="col-md-2 control-label">Todo</label>
                                         <div className="col-md-10">
-                                          <input type="text" className="form-control" id="input-todo" placeholder="Todo"/>
+                                          <input ref={e => this.todoText = e} type="text" className="form-control" placeholder="Todo" />
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="inputTodo" className="col-md-2 control-label">Limit Date</label>
                                         <div className="col-md-10">
-                                          <input type="date" className="form-control" id="input-limit-date" placeholder="limitDate"/>
+                                          <input type="date" className="form-control" ref={e => this.limitDate = e}  placeholder="limitDate"/>
                                         </div>
                                     </div>
                                 </fieldset>
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn-ok btn btn-primary">OK
+                          <button type="button" className="btn-ok btn btn-primary" onClick={() => this.onClickAdd()}>OK
                                 <div className="ripple-container">
                                     <div className="ripple ripple-on ripple-out" ></div>
                                 </div>

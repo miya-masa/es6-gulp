@@ -1,11 +1,13 @@
 import React from 'react';
 import TodoRow from './TodoRow.jsx';
+import TodoStore from '../store/TodoStore';
 
 export default class TodoGridTable extends React.Component {
 
   render() {
+    const rows = this.props.todos.map(e => <TodoRow key={e.id} data = {e} />);
     return (
-       <div id="todo-grid-table">
+      <div>
           <table className="table table-striped table-hover">
               <thead>
                   <tr>
@@ -16,7 +18,9 @@ export default class TodoGridTable extends React.Component {
                       <th>delete</th>
                   </tr>
               </thead>
-              <TodoRow />
+              <tbody>
+              {rows}
+              </tbody>
           </table>
        </div>
       );
