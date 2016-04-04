@@ -23,10 +23,9 @@ export default class TodoContents extends React.Component {
   }
 
   render() {
-    console.log(this.state.todos);
     return (
-      <div className="row">
-          <TodoDialog />
+          <div>
+            <TodoDialog />
           <div>
             <TodoGridTable todos={this.state.todos}/>
           </div>

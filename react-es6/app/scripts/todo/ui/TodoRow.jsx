@@ -8,7 +8,6 @@ export default class TodoRow extends React.Component {
   componentDidMount() {
     console.log(this.completed);
     console.log('Did mount');
-    jQuery.material.checkbox(this.completed);
   }
 
   render() {
