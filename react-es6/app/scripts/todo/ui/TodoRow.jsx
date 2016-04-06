@@ -11,16 +11,15 @@ export default class TodoRow extends React.Component {
   }
 
   render() {
-    const checked = this.props.data.complete ? 'checked' : '';
+    const checked = this.props.todo.complete ? 'checked' : '';
     return (
       <tr>
-        <td>{this.props.data.id}</td>
-        <td>{this.props.data.todo}</td>
-        <td>{this.props.data.limitDate}</td>
+        <td>{this.props.todo.id}</td>
+        <td>{this.props.todo.todo}</td>
+        <td>{this.props.todo.limitDate}</td>
         <td className="form-group">
             <div className="checkbox">
                 <label>
-                  <input ref={e => this.completed = e} type="checkbox" checked={checked} onChange={() => this.onChangeComplete()} />
                 </label>
             </div>
         </td>

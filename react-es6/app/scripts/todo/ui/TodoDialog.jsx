@@ -1,6 +1,8 @@
 import React from 'react';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
+import DatePicker from 'material-ui/lib/date-picker/date-picker';
+import TextField from 'material-ui/lib/text-field';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import TodoActions from '../app/TodoActions';
@@ -14,28 +16,41 @@ export default class TodoContents extends React.Component {
     };
   }
 
-  onClickAdd() {
-    console.log(this.todoText);
-    TodoActions.createTodo({
-      id: 'id1',
-      todo: 'todo',
-      limitDate: '2000/1/1',
-      complete: true
-    });
-  }
-
   handleOpen() {
-    console.log('Hello ');
     this.setState({
       open: true
     });
-  };
+  }
 
   handleClose() {
     this.setState({
       open: false
     });
-  };
+  }
+
+  handleSubmit() {
+    console.log(this.state);
+    const [todo, limitDate] = [this.state.todo, this.state.limitDate];
+    TodoActions.createTodo(todo, limitDate);
+    this.setState({
+      open: false
+    });
+  }
+
+  _onChange(event) {
+    console.log(event);
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
+
+  _onChangeDate(nouse, value) {
+    console.log(value);
+    this.setState({
+      limitDate: "2000/1/1"
+    });
+  }
+
 
   render() {
 
@@ -48,8 +63,8 @@ export default class TodoContents extends React.Component {
       <FlatButton
       label="Submit"
       primary={true}
-      disabled={true}
-      onTouchTap={this.handleClose.bind(this)}
+      disabled={false}
+      onTouchTap={this.handleSubmit.bind(this)}
       />,
     ];
 
@@ -62,8 +77,10 @@ export default class TodoContents extends React.Component {
         <FloatingActionButton style={style} onTouchTap={this.handleOpen.bind(this)} >
           <ContentAdd />
         </FloatingActionButton>
-        <Dialog title="Todo追加" actions={actions} modal={true} open={this.state.open} >
+        <Dialog title="Todo追加" actions={actions} modal={true} open={this.state.open}  >
           <h3>Todo追加してみよう</h3>
+            <TextField hintText="Todo Text" id="todo" onChange={this._onChange.bind(this)}/>
+            <DatePicker hintText="Limit Date" id="limitDate" onChange={this._onChangeDate.bind(this)}/>
         </Dialog>
       </div>
       );

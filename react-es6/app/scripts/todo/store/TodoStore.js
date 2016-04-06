@@ -23,18 +23,18 @@ class TodoStore extends EventEmitter {
     this.emit(CHANGE);
   }
 
-  addListner(callback) {
+  addListener(callback) {
     super.addListener(CHANGE, callback);
   }
 
-  removeListner(callback) {
+  removeListener(callback) {
     super.removeListner(CHANGE, callback);
   }
 
   handleViewAction(payload) {
     switch (payload.action.actionType) {
       case TodoConstants.CREATE:
-        this.createTodo(payload.action.todo);
+        this.createTodo(payload.action.todo, payload.action.limitDate, payload.action.complete);
         this.fireEvent();
         break;
       case TodoConstants.REMOVE:
@@ -46,9 +46,16 @@ class TodoStore extends EventEmitter {
     }
   }
 
-  createTodo(todo) {
-    console.log('created');
-    this.todos.push(todo);
+  createTodo(todo, limitDate, complete = false) {
+    const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
+    console.log('createTodo Store');
+
+    this.todos.push({
+      id,
+      todo,
+      limitDate,
+      complete
+    });
   }
 
   getAllTodos() {

@@ -5,7 +5,7 @@ import TodoStore from '../store/TodoStore';
 export default class TodoGridTable extends React.Component {
 
   render() {
-    const rows = this.props.todos.map(e => <TodoRow key={e.id} data = {e} />);
+    const rows = this.props.todos.map(e => <TodoRow key={e.id} todo = {e} />);
     return (
       <div>
           <table className="table table-striped table-hover">

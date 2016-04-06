@@ -3,10 +3,11 @@ import TodoConstants from './TodoConstants';
 
 class TodoActions {
 
-  createTodo(todo) {
+  createTodo(todo, limitDate) {
     Dispatcher.handleViewAction({
       actionType: TodoConstants.CREATE,
-      todo: todo
+      todo,
+      limitDate
     });
   }
 
