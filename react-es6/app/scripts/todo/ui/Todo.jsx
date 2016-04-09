@@ -21,7 +21,6 @@ export default class Todo extends React.Component {
   }
 
   _onChange() {
-    console.log(TodoStore.getAllTodos());
     this.setState({
       todos: TodoStore.getAllTodos()
     });

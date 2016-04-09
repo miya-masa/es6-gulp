@@ -9,14 +9,17 @@ class TodoStore extends EventEmitter {
   constructor() {
     super();
     this.dispatcherToken = Dispatcher.register(payload => this.handleViewAction(payload));
-    this.todos = [
-      {
-        id: 'id',
-        todo: 'todo',
-        limitDate: '2000/1/1',
-        complete: true
-      }
-    ];
+    this.todos = [];
+    for (let i = 0; i < 1000; i++) {
+      const todo = `test ${i}`;
+      const id = i;
+      const limitDate = '2000/11/11';
+      this.todos.push({
+        id,
+        todo,
+        limitDate
+      });
+    }
   }
 
   fireEvent() {
@@ -37,8 +40,12 @@ class TodoStore extends EventEmitter {
         this.createTodo(payload.action.todo, payload.action.limitDate, payload.action.complete);
         this.fireEvent();
         break;
+      case TodoConstants.COMPLETE:
+        this.completeTodo(payload.action.todoId, payload.action.complete);
+        this.fireEvent();
+        break;
       case TodoConstants.REMOVE:
-        this.createTodo(payload.action.todo);
+        this.removeTodo(payload.action.todoId);
         this.fireEvent();
         break;
       default:
@@ -46,9 +53,16 @@ class TodoStore extends EventEmitter {
     }
   }
 
+  removeTodo(todoId) {
+    this.todos = this.todos.filter(e => e.id !== todoId);
+  }
+
+  completeTodo(todoId, complete) {
+    this.todos.filter(e => e.id === todoId).forEach(e => e.complete = complete);
+  }
+
   createTodo(todo, limitDate, complete = false) {
     const id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-    console.log('createTodo Store');
 
     this.todos.push({
       id,
