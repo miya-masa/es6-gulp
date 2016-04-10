@@ -53,11 +53,14 @@
   "dependencies": {
     "events": "^1.1.0",
     "flux": "^2.1.1",
+    "joi": "^8.0.5",
+    "joi-validation-strategy": "^0.3.3",
     "material-ui": "^0.14.4",
     "moment": "^2.12.0",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
-    "react-tap-event-plugin": "^0.2.2"
+    "react-tap-event-plugin": "^0.2.2",
+    "react-validation-mixin": "^5.3.4"
   },
   "browserify": {
     "transform": [

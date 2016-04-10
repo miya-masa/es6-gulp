@@ -7,11 +7,23 @@ import TextField from 'material-ui/lib/text-field';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentAdd from 'material-ui/lib/svg-icons/content/add';
 import TodoActions from '../app/TodoActions';
+import Joi from 'joi';
+import validation from 'react-validation-mixin';
+import strategy from 'joi-validation-strategy';
 
-export default class TodoContents extends React.Component {
+class TodoDialog extends React.Component {
+
+
+  getValidatorData() {
+    return this.state;
+  }
 
   constructor() {
     super();
+    this.validatorTypes = {
+      todo: Joi.string().required().label('todo')
+    }
+
     this.state = {
       open: false
     };
@@ -30,11 +42,20 @@ export default class TodoContents extends React.Component {
   }
 
   handleSubmit() {
-    const [todo, limitDate] = [this.state.todo, this.state.limitDate];
-    TodoActions.createTodo(todo, limitDate);
-    this.setState({
-      open: false
-    });
+    const onValidate = error => {
+      if (error) {
+        //form has errors; do not submit
+        console.log(error);
+      } else {
+        const [todo, limitDate] = [this.state.todo, this.state.limitDate];
+        console.log('ok');
+        TodoActions.createTodo(todo, limitDate);
+        this.setState({
+          open: false
+        });
+      }
+    };
+    this.props.validate(onValidate);
   }
 
   _onChange(event) {
@@ -51,7 +72,6 @@ export default class TodoContents extends React.Component {
   }
 
   render() {
-
     const actions = [
       <FlatButton
       label="Cancel"
@@ -86,3 +106,4 @@ export default class TodoContents extends React.Component {
   };
 
 }
+export default validation(strategy)(TodoDialog);

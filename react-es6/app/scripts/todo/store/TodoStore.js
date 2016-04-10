@@ -10,16 +10,6 @@ class TodoStore extends EventEmitter {
     super();
     this.dispatcherToken = Dispatcher.register(payload => this.handleViewAction(payload));
     this.todos = [];
-    for (let i = 0; i < 1000; i++) {
-      const todo = `test ${i}`;
-      const id = i;
-      const limitDate = '2000/11/11';
-      this.todos.push({
-        id,
-        todo,
-        limitDate
-      });
-    }
   }
 
   fireEvent() {
