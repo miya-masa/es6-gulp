@@ -16,7 +16,7 @@
  *  limitations under the License
  *
  */
-/* eslint-env browser,jquery */
+/* eslint-env browser,jquery global */
 import Todo from './todo/ui/Todo.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';

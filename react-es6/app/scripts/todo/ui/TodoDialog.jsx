@@ -13,15 +13,24 @@ import strategy from 'joi-validation-strategy';
 
 class TodoDialog extends React.Component {
 
-
   getValidatorData() {
     return this.state;
   }
 
   constructor() {
     super();
+    const language = {
+      any: {
+        required: '{{key}} は必須です。'
+      }
+    };
     this.validatorTypes = {
-      todo: Joi.string().required().label('todo')
+      limitDate: Joi.string().required().label('Limit Date').options({
+        language
+      }),
+      todo: Joi.string().required().label('Todo Text').options({
+        language
+      })
     }
 
     this.state = {
@@ -36,23 +45,27 @@ class TodoDialog extends React.Component {
   }
 
   handleClose() {
+    this.closeDialog();
+  }
+
+  closeDialog() {
     this.setState({
-      open: false
+      open: false,
+      error: undefined
     });
   }
 
   handleSubmit() {
     const onValidate = error => {
+      console.log(error);
       if (error) {
-        //form has errors; do not submit
-        console.log(error);
+        this.setState({
+          error
+        });
       } else {
         const [todo, limitDate] = [this.state.todo, this.state.limitDate];
-        console.log('ok');
         TodoActions.createTodo(todo, limitDate);
-        this.setState({
-          open: false
-        });
+        this.closeDialog();
       }
     };
     this.props.validate(onValidate);
@@ -98,8 +111,8 @@ class TodoDialog extends React.Component {
         </FloatingActionButton>
         <Dialog title="Todo追加" actions={actions} modal={true} open={this.state.open}  >
           <h3>Todo追加してみよう</h3>
-            <TextField hintText="Todo Text" id="todo" onChange={this._onChange.bind(this)}/>
-            <DatePicker hintText="Limit Date" id="limitDate" onChange={this._onChangeDate.bind(this)} DateTimeFormat={Intl.DateTimeFormat} locale="ja"/>
+            <TextField hintText="Todo Text" errorText={this.state.error ? this.state.error.todo : ''} id="todo" onChange={this._onChange.bind(this)}/>
+            <DatePicker hintText="Limit Date" id="limitDate"  errorText={this.state.error ? this.state.error.limitDate : ''} onChange={this._onChangeDate.bind(this)} DateTimeFormat={Intl.DateTimeFormat} locale="ja"/>
         </Dialog>
       </div>
       );
