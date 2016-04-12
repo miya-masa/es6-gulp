@@ -10,7 +10,6 @@ class TodoStore extends EventEmitter {
     super();
     this.dispatcherToken = Dispatcher
       .register(payload => this.handleViewAction(payload));
-    this.todos = [];
   }
 
   fireEvent() {
@@ -48,27 +47,39 @@ class TodoStore extends EventEmitter {
   }
 
   removeTodo(todoId) {
-    this.todos = this.todos.filter(e => e.id !== todoId);
+    localStorage.removeItem(todoId);
   }
 
   completeTodo(todoId, complete) {
-    this.todos.filter(e => e.id === todoId).forEach(e => e.complete = complete);
+    const target = JSON.parse(localStorage.getItem(todoId));
+    target.complete = complete;
+    localStorage.setItem(todoId, JSON.stringify(target));
   }
 
   createTodo(todo, limitDate, complete = false) {
     const id = (Number(new Date()) +
     Math.floor(Math.random() * 999999)).toString(36);
-
-    this.todos.push({
+    console.log(JSON.stringify({
       id,
       todo,
       limitDate,
       complete
-    });
+    }));
+
+    localStorage.setItem(id, JSON.stringify({
+      id,
+      todo,
+      limitDate,
+      complete
+    }));
   }
 
   getAllTodos() {
-    return this.todos.filter(() => true);
+    const todos = [];
+    for (let i = 0; i < localStorage.length; ++i) {
+      todos.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+    }
+    return todos.filter(() => true);
   }
 }
 export default new TodoStore();
