@@ -1,5 +1,14 @@
 import gulp from 'gulp';
 import { Server } from 'karma';
+import jscs from 'gulp-jscs';
+
+gulp.task('format', () => {
+  return gulp.src('./src/**/*.js')
+    .pipe(jscs({
+      fix: true
+    }))
+    .pipe(gulp.dest('src'));
+})
 
 /**
  * Run test once and exit

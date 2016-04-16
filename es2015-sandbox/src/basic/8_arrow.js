@@ -21,23 +21,29 @@ describe('arrow', () => {
   });
 
   it('Context', () => {
+    // arrow表記の関数
     const func = () => {
       return this.name;
     };
+    // 従来の関数定義
     const func2 = function() {
       return this.name;
     };
+
     const name = 'Yamada Taro';
     const context = {
       name,
+      // arrow表記の場合のコンテキストチェック
       func
     };
     const context2 = {
       name,
+      // 従来の関数定義のコンテキストチェック
       func2
     };
-    console.log(context.func());
-    console.log(context2.func2());
+
+    expect(context.func()).toEqual('');
+    expect(context2.func2()).toEqual('Yamada Taro');
   });
 
 });

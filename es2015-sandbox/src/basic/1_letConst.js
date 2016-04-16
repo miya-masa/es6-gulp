@@ -19,7 +19,7 @@ describe('let const', () => {
     }
     expect(hoge).toBe('hoge');
     expect(() => {
-      hoge = 'hoga'
+      hoge = 'hoga';
     }).toThrow();
   });
 
