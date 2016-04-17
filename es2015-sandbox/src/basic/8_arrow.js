@@ -1,18 +1,18 @@
-describe('arrow', () => {
+describe('Functions', () => {
 
-  it('No Args', () => {
+  it('Arrow syntax No Args', () => {
     const func = () => 'Hello World';
     expect(func()).toBe('Hello World');
   });
 
-  it('Multi Args', () => {
+  it('Arrow syntax Exists Args', () => {
     const one = name => `Hello ${name}`;
     expect(one('Taro')).toBe('Hello Taro');
     const two = (first, last) => `Hello ${first} ${last}`;
     expect(two('Taro', 'Yamada')).toBe('Hello Taro Yamada');
   });
 
-  it('Multi Line', () => {
+  it('Arrow syntax Multi Line', () => {
     const two = (first, last) => {
       const greeting = `GoodEvening ${first} ${last}`;
       return greeting;
@@ -20,7 +20,7 @@ describe('arrow', () => {
     expect(two('Taro', 'Yamada')).toBe('GoodEvening Taro Yamada');
   });
 
-  it('Context', () => {
+  it('Arrow syntax Context', () => {
     // arrow表記の関数
     const func = () => {
       return this.name;
@@ -44,6 +44,17 @@ describe('arrow', () => {
 
     expect(context.func()).toEqual('');
     expect(context2.func2()).toEqual('Yamada Taro');
+  });
+
+  it('Variable arguments', () => {
+
+    const func = (one, two, ...args) => {
+      expect(one).toEqual(1);
+      expect(two).toEqual(2);
+      expect(args).toEqual([3, 4, 5, 'Hello World']);
+      expect(...args).toEqual(3);
+    };
+    func(1, 2, 3, 4, 5, 'Hello World');
   });
 
 });
