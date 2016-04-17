@@ -57,4 +57,10 @@ describe('Functions', () => {
     func(1, 2, 3, 4, 5, 'Hello World');
   });
 
+  it('デフォルト引数', () => {
+
+    const func = (name = 'Yamada') => `Hello ${name}`;
+    expect(func()).toEqual('Hello Yamada');
+    expect(func('Taro')).toEqual('Hello Taro');
+  });
 });
