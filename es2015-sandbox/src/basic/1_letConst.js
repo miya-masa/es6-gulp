@@ -7,9 +7,9 @@ describe('letとconst', () => {
     expect(hoge).toBe('hoge');
     // ブロックスコープを定義
     {
-      // 同じ変数名で宣言
-      let hoge = 'fuga';
-      expect(hoge).toBe('fuga');
+    // 同じ変数名で宣言
+    let hoge = 'fuga';
+    expect(hoge).toBe('fuga');
     }
     expect(hoge).toBe('hoge');
   });
@@ -20,15 +20,13 @@ describe('letとconst', () => {
     expect(hoge).toBe('hoge');
     // ブロックスコープを定義
     {
-      // 同じ変数名で宣言
-      const hoge = 'fuga';
-      expect(hoge).toBe('fuga');
+    // 同じ変数名で宣言
+    const hoge = 'fuga';
+    expect(hoge).toBe('fuga');
     }
     expect(hoge).toBe('hoge');
     // 再代入の動作を確認
-    expect(() => {
-//      hoge = 'hoga';
-    }).toThrow();
+    // hoge = 'hoga';
   });
 
 });

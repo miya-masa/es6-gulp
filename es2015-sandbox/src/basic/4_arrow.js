@@ -23,27 +23,25 @@ describe('Functions', () => {
   it('Arrow syntax Context', () => {
     // arrow表記の関数
     const func = () => {
-      return this.name;
+      return this;
     };
     // 従来の関数定義
     const func2 = function() {
-      return this.name;
+      return this;
     };
 
-    const name = 'Yamada Taro';
     const context = {
-      name,
       // arrow表記の場合のコンテキストチェック
       func
     };
     const context2 = {
-      name,
       // 従来の関数定義のコンテキストチェック
       func2
     };
 
-    expect(context.func()).toEqual('');
-    expect(context2.func2()).toEqual('Yamada Taro');
+    // 処理系によって違う
+    expect(context.func()).toBeUndefined();
+    expect(context2.func2()).toEqual(context2);
   });
 
   it('Variable arguments', () => {
