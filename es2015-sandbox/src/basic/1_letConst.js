@@ -27,7 +27,7 @@ describe('letとconst', () => {
     expect(hoge).toBe('hoge');
     // 再代入の動作を確認
     expect(() => {
-      hoge = 'hoga';
+//      hoge = 'hoga';
     }).toThrow();
   });
 
