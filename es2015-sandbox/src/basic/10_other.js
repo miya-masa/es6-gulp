@@ -59,5 +59,6 @@ describe('Other Api', () => {
     expect(name).toEqual('Yamada Taro');
 
   });
+  //TODO Object.assignを追加する
 
 });

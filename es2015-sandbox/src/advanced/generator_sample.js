@@ -61,7 +61,6 @@ describe('ジェネレータに慣れる', () => {
       done();
     }
 
-
     async(main());
   });
 
