@@ -16,8 +16,8 @@
  *  limitations under the License
  *
  */
-/* eslint-env browser,jquery global */
-import Todo from './todo/ui/Todo.jsx';
+/* eslint-env browser,jquery global*/
+import Todo from './todo/container/Todo.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
