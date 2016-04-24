@@ -1,13 +1,15 @@
 // 変数宣言のletとconstについてを学ぶ
-describe('letとconst', () => {
+xdescribe('letとconst', () => {
   it('let', () => {
     // letで宣言
-    let hoge = 'hoge';
+    // START TODO
+    // END TODO
     expect(hoge).toBe('hoge');
     // ブロックスコープを定義
     {
       // 同じ変数名で宣言
-      let hoge = 'fuga';
+      // START TODO
+      // END TODO
       expect(hoge).toBe('fuga');
     }
     expect(hoge).toBe('hoge');
@@ -15,12 +17,14 @@ describe('letとconst', () => {
 
   it('const', () => {
     // constで宣言
-    const hoge = 'hoge';
+    // START TODO
+    // END TODO
     expect(hoge).toBe('hoge');
     // ブロックスコープを定義
     {
       // 同じ変数名で宣言
-      const hoge = 'fuga';
+      // START TODO
+      // END TODO
       expect(hoge).toBe('fuga');
     }
     expect(hoge).toBe('hoge');

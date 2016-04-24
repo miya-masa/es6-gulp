@@ -1,7 +1,7 @@
-describe('変数の分割代入', () => {
+xdescribe('変数の分割代入', () => {
   it('配列代入', () => {
     // 配列形式で変数の宣言 + 代入
-    const [hoge, foo] = ['hoge', 'foo'];
+    // TODO hoge fooを配列方式で分割代入
 
     expect(hoge).toEqual('hoge');
     expect(foo).toEqual('foo');
@@ -9,10 +9,7 @@ describe('変数の分割代入', () => {
 
   it('オブジェクト代入', () => {
     // オブジェクト形式で変数の宣言 + 代入
-    const {hoge, foo} = {
-      foo: 'foo',
-      hoge: 'hoge'
-    };
+    // TODO hoge fooをオブジェクト方式で分割代入
 
     expect(hoge).toEqual('hoge');
     expect(foo).toEqual('foo');
@@ -30,27 +27,24 @@ describe('変数の分割代入', () => {
     // 入れ子形式で変数の宣言 + 代入
     const {hoge, foo, piyo, piyo: {fuga}} = data;
 
-    expect(hoge).toEqual('hoge');
-    expect(foo).toEqual('foo');
-    expect(piyo.fuga).toEqual('fuga');
-    expect(fuga).toEqual('fuga');
+    expect(hoge).toEqual( /* TODO */ );
+    expect(foo).toEqual( /* TODO */ );
+    expect(piyo.fuga).toEqual( /* TODO */ );
+    expect(fuga).toEqual( /* TODO */ );
   });
 
   it('変数名の指定', () => {
-    // オブジェクト形式かつ別変数名で代入する
-    const {hoge: x, foo} = {
-      hoge: 'hoge',
-      foo: 'foo'
-    };
+    // TODO オブジェクト形式かつ別変数名で代入する
+    //  {
+    //   hoge: 'hoge',
+    //   foo: 'foo'
+    // };
     expect(x).toEqual('hoge');
     expect(foo).toEqual('foo');
   });
 
   it('デフォルト値の指定', () => {
-    // オブジェクト形式で値がなかった時を設定する
-    const {hoge: x = 'default', foo} = {
-      foo: 'foo'
-    };
+    // TODO オブジェクト形式で値がなかった時を設定する
 
     expect(x).toEqual('default');
     expect(foo).toEqual('foo');

@@ -1,34 +1,22 @@
 // Personクラスを定義
 class Person {
-
+  // Start TODO
   // コンストラクタ.
-  constructor (firstName = 'Taro', lastName = 'Yamada') {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
 
   // greetingメソッド
-  greeting () {
-    return `Hello ${this.firstName} ${this.lastName}`;
-  }
-
+  // End TODO
 }
 
 // Personを継承したBusinessPersonを定義
 class BusinessPerson extends Person {
+  // Start TODO
   // コンストラクタ.
-  constructor (firstName = 'Taro', lastName = 'Yamada', rank = 'Normal') {
-    super(firstName, lastName);
-    this.rank = rank;
-  }
 
   // greegin メソッド.superを使って親のメソッドを呼び出してみる.
-  greeting () {
-    return `${super.greeting()}.My rank is ${this.rank}`;
-  }
+  // End TODO
 }
 
-describe('Class', () => {
+xdescribe('Class', () => {
   it('基本', () => {
     // Personクラスのインスタンスを生成
     const yamada = new Person();

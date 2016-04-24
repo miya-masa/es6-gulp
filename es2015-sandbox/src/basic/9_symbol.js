@@ -1,9 +1,9 @@
-describe('Symbol', () => {
+xdescribe('Symbol', () => {
   it('Symbolの基本', () => {
-    // Symbolの宣言(hoge)
-    const hoge = Symbol('hoge');
-    // 同じキーでSymbolの宣言(hoge)
-    const hoge2 = Symbol('hoge');
+    // TODO Symbolの宣言(hoge)
+    // const hoge
+    // TODO 同じキーでSymbolの宣言(hoge)
+    // const hoge2
     // それぞれで比較する
     expect(hoge).not.toBe(hoge2);
     expect(hoge).not.toEqual(hoge2);
@@ -12,17 +12,17 @@ describe('Symbol', () => {
   });
 
   it('プロパティの中のシンボル', () => {
-    // Symbolの宣言
-    const hoge = Symbol('hoge');
+    // TODO Symbolの宣言
+    // const hoge
     // オブジェクトのキーとしてSymbolを利用する
     const obj = {
       [hoge]: 'hoge'
     };
     // keysの確認
-    expect(Object.keys(obj)).toEqual([]);
+    expect(Object.keys(obj)).toEqual( /* TODO */ );
     // 文字列出力の確認
-    expect(JSON.stringify(obj)).toEqual('{}');
+    expect(JSON.stringify(obj)).toEqual( /* TODO */ );
     // 取得の確認
-    expect(obj[hoge]).toEqual('hoge');
+    expect(obj[hoge]).toEqual( /* TODO */ );
   });
 });

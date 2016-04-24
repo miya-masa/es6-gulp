@@ -1,4 +1,4 @@
-describe('その他のAPIとかシンタックスとか', () => {
+xdescribe('その他のAPIとかシンタックスとか', () => {
   it('Map', () => {
     // Mapの宣言
     const map = new Map();

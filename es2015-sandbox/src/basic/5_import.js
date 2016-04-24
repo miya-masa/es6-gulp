@@ -1,20 +1,21 @@
 // see ./module/export
 // デフォルトモジュールをインポートする
-import defaultModule from './module/export';
+// TODO ./module/export からデフォルトモジュールをインポート
 // barをインポートする
-import { bar } from './module/export';
+// TODO ./module/export から"bar"をインポート
 // foo,baz,Hoge,fugaをインポートする
+// TODO ./module/export から"foo,baz,Hoge,fuga"を一気にインポートする
 import { foo, baz, Hoge, fuga } from './module/export';
 
-describe('importの確認', () => {
+xdescribe('importの確認', () => {
   it('exportされたモジュールを利用する', () => {
     // インポートされたか確認
-    expect(defaultModule()).toEqual('defaultModule');
-    expect(foo.foo).toEqual('foo');
-    expect(bar()).toEqual('bar');
-    expect(baz).toEqual(1);
+    expect(defaultModule()).toEqual( /* TODO */ );
+    expect(foo.foo).toEqual( /* TODO */ );
+    expect(bar()).toEqual( /* TODO */ );
+    expect(baz).toEqual( /* TODO */ );
     var hoge = new Hoge();
-    expect(hoge.hoge).toEqual('hoge');
-    expect(fuga).toEqual([1, 2, 3, 4]);
+    expect(hoge.hoge).toEqual( /* TODO */ );
+    expect(fuga).toEqual( /* TODO */ );
   });
 });

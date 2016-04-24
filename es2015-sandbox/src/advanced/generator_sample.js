@@ -1,23 +1,14 @@
 // 非同期制御を行うための関数
 const async = (gen) => {
-  const recursive = (response) => {
-    gen.next(response).value.then(recursive);
-  };
-  gen.next().value.then(recursive);
+  // TODO
 };
 
-describe('ジェネレータに慣れる', () => {
+xdescribe('ジェネレータに慣れる', () => {
   it('フィボナッチ', () => {
     // ジェネレータでフィボナッチ数列を作る
     // 引数の数だけ数列の個数を返す,フィボナッチ数列のジェネレータ
     const fibgen = function * (count) {
-      let i = 0;
-      let [current, previous] = [1, 0];
-      while (i < count) {
-        yield current;
-        [current, previous] = [current + previous, current];
-        i++;
-      }
+      // TODO 
     };
     const fib = fibgen(10);
     const fibArray = [];
@@ -58,10 +49,7 @@ describe('ジェネレータに慣れる', () => {
     };
 
     function * main() {
-      const user = yield getUser();
-      const userStatus = yield getStatus(user.id);
-      expect(userStatus.status).toEqual('GOOD');
-      done();
+      //TODO
     }
 
     async(main());
@@ -117,15 +105,7 @@ describe('ジェネレータに慣れる', () => {
 
     const actualMessages = [];
     function * main() {
-      for (var i = 0; i < 5; ++i) {
-        const rightMessage = yield right(i);
-        actualMessages.push(rightMessage);
-        const heavyMessage = yield heavy(i);
-        actualMessages.push(heavyMessage);
-        const randomMessage = yield random(i);
-        actualMessages.push(randomMessage);
-      }
-      expect(actualMessages).toEqual(expectMessages);
+      //TODO
       done();
     }
 

@@ -10,8 +10,7 @@ const Hoge = class Hoge {
 };
 const fuga = [1, 2, 3, 4];
 // デフォルトモジュールをexport
-export default () => 'defaultModule';
-// fooをexport
-export { foo };
-// bar,baz,Hoge,fugaをexport
-export { bar, baz, Hoge, fuga };
+// TODO デフォルトモジュールを直接export
+// () => 'defaultModule';
+// TODO fooをexport
+// TODO bar,baz,Hoge,fugaをexport

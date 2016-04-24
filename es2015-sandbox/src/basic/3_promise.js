@@ -1,5 +1,5 @@
 // デフォルト10ms後に処理を行う関数
-// isReject = true で reject それ以外で resolve するように実装する
+// isReject = true で rejectし それ以外で resolve するように実装する
 // setTimeout(() => {}, ms)
 // new Promise((resolve,reject) => {});
 const delay = ({isReject = false, millis = 10, resolvedMessage = 'resolved'}) => new Promise((resolve, reject) => {
@@ -28,7 +28,7 @@ const delay3 = () => delay({
   resolvedMessage: 'comp3'
 });
 
-describe('Promise', () => {
+xdescribe('Promise', () => {
   beforeEach(() => {
     // 時間のエミュレータのセットアップ
     jasmine.clock().install();
@@ -40,68 +40,52 @@ describe('Promise', () => {
 
   it('基本', (done) => {
     // delayを呼び出した後のPromiseでメッセージを確認する。
-    delay({})
-      .then((arg) => {
-        expect(arg).toEqual('resolved');
-        done();
-      });
+    // メッセージの確認
+    //  expect(arg).toEqual('resolved');
+    //  done();
+    //  Start TODO
+    //  コメント外す↓
+    //  delay({}).
+    //  End TODO
   });
 
   it('コールのチェーン', (done) => {
     // delayを２回呼び出す。
-    delay({})
-      .then((arg) => {
-        expect(arg).toEqual('resolved');
-        return delay({});
-      })
-      .then((arg) => {
-        expect(arg).toEqual('resolved');
-        done();
-      });
-
+    // メッセージの確認
+    //  expect(arg).toEqual('resolved');
+    //  done();
+    //  Start TODO
+    //  コメント外す↓
+    //  delay({}).
+    //  End TODO
     jasmine.clock().tick(100000);
   });
 
   it('Reject時のキャッチ', (done) => {
-    // delay => tyenでisReject = trueで再度delay => もう一度then => 最後にキャッチ
-    delay({})
-      .then((arg) => {
-        expect(arg).toEqual('resolved');
-        return delay({
-          isReject: true
-        });
-      })
-      .then(() => {
-        throw new Error();
-      })
-      .catch((arg) => {
-        expect(arg).toEqual('rejected');
-        done();
-      });
+    // delay => tyenで"isReject = true"で再度delay => もう一度then(通らないはず) => 最後にcatch
+    //  Start TODO
+    //  コメント外す↓
+    //  delay({}).
+    //  End TODO
   });
 
   it('All.複数の非同期処理で同期を取る', (done) => {
     // delay1,delay2,delay3を一気に呼び出し、全部終わったらそれぞれの結果を確認してみる。
-    Promise.all([
-      delay1(),
-      delay2(),
-      delay3()
-    ])
-      .then((arg) => {
-        expect(arg).toEqual(['comp1', 'comp2', 'comp3']);
-        done();
-      });
+    //  delay1()
+    //  delay2()
+    //  delay3()
+    // 確認コード => expect(arg).toEqual(['comp1', 'comp2', 'comp3']);
+    //  Start TODO
+    //  End TODO
   });
 
   it('race.最初に終了した結果を取得する', (done) => {
     // delay1,delay2,delay3を一気に呼び出し、最初に終わったら結果を確認してみる。
-    Promise.race([
-      delay1(),
-      delay2(),
-      delay3()
-    ]).then((arg) => {
-      expect(arg).toEqual('comp1');
-      done();
-    });
+    //  delay1()
+    //  delay2()
+    //  delay3()
+    // 確認コード => expect(arg).toEqual('comp1');
+    //  Start TODO
+    //  End TODO
   });
 });

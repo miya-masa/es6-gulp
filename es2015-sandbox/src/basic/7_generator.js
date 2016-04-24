@@ -1,10 +1,7 @@
-describe('ジェネレータ', () => {
+xdescribe('ジェネレータ', () => {
   it('基本', () => {
-    // ジェネレータの作成
-    const gen = function * () {
-      yield 1;
-      yield 2;
-    };
+    // TODO ジェネレータの作成
+    // 1 と 2 で yield
 
     // ジェネレータを呼び出し
     const it = gen();
@@ -27,12 +24,7 @@ describe('ジェネレータ', () => {
   });
 
   it('generatorのforOf', () => {
-    // 引数の回数分繰り返すジェネレータ
-    const gen = function * (num) {
-      for (var i = 0; i < num; ++i) {
-        yield i;
-      }
-    };
+    // TODO 引数の回数分繰り返すジェネレータ
 
     const actual = [];
     // for of （For Of もEcmascript2015から利用可能）
@@ -54,16 +46,16 @@ describe('ジェネレータ', () => {
 
     // 初回は開始なので値を無し
     const first = it.next();
-    expect(first.value).toEqual(0);
+    expect(first.value).toEqual( /* TODO */ );
 
     // nextの引数でジェネレータ内に値を渡す
-    const second = it.next(5);
-    expect(second.value).toEqual(1);
+    const second = it.next( /* TODO */ );
+    expect(second.value).toEqual( /* TODO */ );
 
-    const third = it.next(6);
-    expect(third.value).toEqual(2);
+    const third = it.next( /* TODO */ );
+    expect(third.value).toEqual( /* TODO */ );
 
-    const forth = it.next(7);
+    const forth = it.next( /* TODO */ );
     expect(forth.value).toBeUndefined();
   });
 });
