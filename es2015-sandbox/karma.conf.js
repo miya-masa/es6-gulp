@@ -70,7 +70,7 @@ module.exports = function(config) {
     // configuration Browserify
     browserify: {
       debug: true,
-      transform: [ 'babelify' ]
+      transform: [ 'babelify' , ['presets' : ['es2015']]]
     }
   })
 }

@@ -1,6 +1,5 @@
-//変数宣言のletとconstについてを学ぶ
+// 変数宣言のletとconstについてを学ぶ
 describe('letとconst', () => {
-
   it('let', () => {
     // letで宣言
     let hoge = 'hoge';
@@ -25,8 +24,7 @@ describe('letとconst', () => {
       expect(hoge).toBe('fuga');
     }
     expect(hoge).toBe('hoge');
-    // 再代入の動作を確認
-    // hoge = 'hoga';
+  // 再代入の動作を確認
+  // hoge = 'hoga';
   });
-
 });

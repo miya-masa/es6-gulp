@@ -6,28 +6,23 @@ const async = (gen) => {
 };
 
 describe('ジェネレータに慣れる', () => {
-
   it('フィボナッチ', () => {
-
-    const fibgen = function*(count) {
+    const fibgen = function * (count) {
       let i = 0;
       let [current, previous] = [1, 0];
       while (i < count) {
         yield current;
-        [current, previous] = [current + previous, current]
+        [current, previous] = [current + previous, current];
         i++;
       }
     };
-
     const fib = fibgen(10);
     for (let value of fib) {
       console.log(value);
     }
-
   });
 
   it('非同期制御その１', (done) => {
-
     const getUser = () => {
       return new Promise(
         (resolve) => {
@@ -55,9 +50,10 @@ describe('ジェネレータに慣れる', () => {
       );
     };
 
-    function* main() {
+    function * main() {
       const user = yield getUser();
       const userStatus = yield getStatus(user.id);
+      expect(userStatus.complete).toEqual('true');
       done();
     }
 
@@ -65,7 +61,6 @@ describe('ジェネレータに慣れる', () => {
   });
 
   it('非同期制御その２', (done) => {
-
     const heavy = () => {
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -90,7 +85,7 @@ describe('ジェネレータに慣れる', () => {
       });
     };
 
-    function* main() {
+    function * main() {
       for (var i = 0; i < 5; ++i) {
         const rightMessage = yield right();
         console.log(`${i}:${rightMessage}`);
@@ -104,5 +99,4 @@ describe('ジェネレータに慣れる', () => {
 
     async(main());
   });
-
 });

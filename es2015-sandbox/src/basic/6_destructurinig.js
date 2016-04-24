@@ -1,5 +1,4 @@
 describe('変数の分割代入', () => {
-
   it('配列代入', () => {
     // 配列形式で変数の宣言 + 代入
     const [hoge, foo] = ['hoge', 'foo'];
@@ -39,12 +38,12 @@ describe('変数の分割代入', () => {
 
   it('変数名の指定', () => {
     // オブジェクト形式かつ別変数名で代入する
-    const {hoge:x, foo} = {
+    const {hoge: x, foo} = {
       hoge: 'hoge',
       foo: 'foo'
     };
-
     expect(x).toEqual('hoge');
+    expect(foo).toEqual('foo');
   });
 
   it('デフォルト値の指定', () => {
@@ -54,6 +53,6 @@ describe('変数の分割代入', () => {
     };
 
     expect(x).toEqual('default');
+    expect(foo).toEqual('foo');
   });
-
 });

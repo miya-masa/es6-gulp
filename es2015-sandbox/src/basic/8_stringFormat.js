@@ -13,5 +13,4 @@ describe('文字列テンプレート', () => {
 ${name}`;
     expect(helloMessage).toBe('Hello\nYamada Taro');
   });
-
 });
