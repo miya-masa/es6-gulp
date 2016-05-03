@@ -43,8 +43,8 @@ describe('Promise', () => {
     delay({})
       .then((arg) => {
         expect(arg).toEqual('resolved');
-        done();
-      });
+      })
+      .then(done, done);
   });
 
   it('コールのチェーン', (done) => {
@@ -56,8 +56,29 @@ describe('Promise', () => {
       })
       .then((arg) => {
         expect(arg).toEqual('resolved');
-        done();
-      });
+      })
+      .then(done, done);
+
+    jasmine.clock().tick(100000);
+  });
+
+  it('コールのチェーン２', (done) => {
+    // delayを３回呼び出す。
+    delay({})
+      .then((arg) => {
+        expect(arg).toEqual('resolved');
+        // Promise返し
+        return delay({});
+      })
+      .then((arg) => {
+        expect(arg).toEqual('resolved');
+        // 通常オブジェクト返し
+        return 'Hello World';
+      })
+      .then((arg) => {
+        expect(arg).toEqual('Hello World');
+      })
+      .then(done, done);
 
     jasmine.clock().tick(100000);
   });
@@ -76,8 +97,8 @@ describe('Promise', () => {
       })
       .catch((arg) => {
         expect(arg).toEqual('rejected');
-        done();
-      });
+      })
+      .then(done, done);
   });
 
   it('All.複数の非同期処理で同期を取る', (done) => {
